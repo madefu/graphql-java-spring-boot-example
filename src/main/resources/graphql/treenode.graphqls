@@ -1,0 +1,39 @@
+type TreeNode {
+    id: ID!
+    value: String!
+    parentId: ID
+    children: [TreeNode]
+}
+
+extend type Query {
+    findChildren(parentId:ID!):[TreeNode]!
+
+    findChildrenPageable(parentId:ID!,page: Int!,size: Int!):[TreeNode]!
+    #游标分页
+#    findChildrenCursor(parentId:ID!,size: Int!,cursor: ID!):TreeNodeConnection!
+    #TODO not passed
+#    findChildrenCursor(parentId:ID!,first: Int!,after:String, last: Int, before: String!):TreeNodeConnection!
+
+
+
+#    findTreeRecursive(id:ID!):TreeNode!
+}
+
+extend type Mutation {
+    newTreeNode(parentId:ID,value:String!):TreeNode!
+}
+
+#type TreeNodeConnection{
+#    edges:[TreeNodeEdge]
+#    pageInfo:PageInfo
+#}
+#
+#extend type TreeNodeEdge{
+#    cursor:String
+#    node:TreeNode
+#}
+#
+#extend type PageInfo{
+#    hasPreviousPage:Boolean!
+#    hasNextPage:Boolean!
+#}

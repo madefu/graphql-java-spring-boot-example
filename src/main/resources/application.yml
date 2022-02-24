@@ -1,6 +1,13 @@
 graphql:
   servlet:
     mapping: /graphql
+  tools:
+    schema-location-pattern: graphql/*.graphqls
+  playground:
+    enabled: true
+    mapping: /playground
+
+
 myprops:
   artifactId: '@project.artifactId@'
   version: '@project.version@'
@@ -26,7 +33,6 @@ spring:
 
 voyager:
   mapping: /voyager
-
 logging:
   level:
     org.hibernate.SQL: WARN

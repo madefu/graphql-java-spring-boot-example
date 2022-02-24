@@ -7,8 +7,28 @@ type Author {
 type Query {
     findAllAuthors: [Author]!
     countAuthors: Int!
-}
 
+    findAuthorsPage(first: Int!, after:String): AuthorConnection
+
+#    findAuthorsPage2(first: Int!, after:ID!): AuthorConnection
+}
 type Mutation {
     newAuthor(firstName: String!, lastName: String!) : Author!
 }
+
+type AuthorConnection {
+    edges:[AuthorEdge]
+    pageInfo:PageInfo
+}
+
+type AuthorEdge{
+    cursor:String
+    node:Author
+}
+
+type PageInfo{
+    hasPreviousPage:Boolean!
+    hasNextPage:Boolean!
+}
+
+
